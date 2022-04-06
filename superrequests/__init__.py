@@ -1,10 +1,11 @@
-__version__ = '0.1.0'
+__version__ = "0.1.0"
 
-from requests_toolbelt import sessions
 from requests.adapters import HTTPAdapter
+from requests_toolbelt import sessions  # type: ignore
 from urllib3.util.retry import Retry
 
 DEFAULT_TIMEOUT = 10  # seconds
+
 
 class TimeoutHTTPAdapter(HTTPAdapter):
     def __init__(self, *args, **kwargs):
@@ -26,7 +27,7 @@ default_retry_strategy = Retry(
     read=3,
     total=3,
     status_forcelist=[429, 500, 502, 503, 504],
-    method_whitelist=["HEAD", "GET", "OPTIONS"],
+    allowed_methods=["HEAD", "GET", "OPTIONS"],
 )
 
 
@@ -48,10 +49,11 @@ class Session(sessions.BaseUrlSession):
         if retry_strategy:
             adapter_kwargs["max_retries"] = retry_strategy
 
-        adapter_kwargs["timeout"] = timeout
-        adapter = TimeoutHTTPAdapter(**adapter_kwargs)
-        self.mount("http://", adapter)
-        self.mount("https://", adapter)
+        if timeout is not None:
+            adapter_kwargs["timeout"] = timeout
+            adapter = TimeoutHTTPAdapter(**adapter_kwargs)
+            self.mount("http://", adapter)
+            self.mount("https://", adapter)
 
         if raise_for_status:
             assert_status_hook = (
