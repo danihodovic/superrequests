@@ -15,6 +15,8 @@ black = "^22.3.0"
 pylint = "^2.13.4"
 isort = "^5.10.1"
 mypy = "^0.942"
+types-requests = "^2.27.16"
+pytest-cov = "^3.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
