@@ -7,7 +7,7 @@ authors = ["Dani Hodovic <dani.hodovic@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 requests = "^2.27.1"
-requests-toolbelt = "^0.9.1"
+requests-toolbelt = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
