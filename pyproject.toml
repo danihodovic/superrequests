@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "superrequests"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Dani Hodovic <dani.hodovic@gmail.com>"]
 
