@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "superrequests"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Dani Hodovic <dani.hodovic@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8"
 requests = "^2.31.0"
 requests-toolbelt = "^1.0.0"
 
